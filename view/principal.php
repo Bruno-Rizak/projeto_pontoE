@@ -9,7 +9,7 @@
 			<li>Usuario</li>
 			<ul>
 				<li><a href="usuario/cadastro_usuario.php">Cadastrar</a></li>
-				<li>Listar</li>
+				<li><a href="../../controller/usuario_controller.php?acao=listar">Listar</li>
 			</ul>
 		</ul>
 		

@@ -49,7 +49,7 @@ Empregado
         $con = $db->connect();
 
         $sql = "INSERT INTO empregado(no_matricula, nome, sobrenome, data_contratacao, data_nascimento) 
-VALUES ($this->noMatricula, '$this->nome', '$this->sobrenome', '$this->dataContratacao', '$this->dataNascimento')";
+        VALUES ($this->noMatricula, '$this->nome', '$this->sobrenome', '$this->dataContratacao', '$this->dataNascimento')";
 
         $status = $con->exec($sql);
 
@@ -61,8 +61,8 @@ VALUES ($this->noMatricula, '$this->nome', '$this->sobrenome', '$this->dataContr
         $con = $db->connect();
 
         $sql = "UPDATE empregado SET no_matricula = $this->noMatricula, nome = '$this->nome', 
-sobrenome = :sobrenome, data_contratacao = '$this->dataContratacao', 
-data_nascimento = '$this->dataNascimento' WHERE id = $this->id";
+        sobrenome = :sobrenome, data_contratacao = '$this->dataContratacao', 
+        data_nascimento = '$this->dataNascimento' WHERE id = $this->id";
 
         $status = $con->exec($sql);
 

@@ -46,9 +46,52 @@ class Usuario
 
     }
 
-    public function __construct()
+
+    public function buscarPorId($id)
     {
+        $db = new Database();
+        $con = $db->connect();
+
+        $sql = "SELECT id, nome, sobrenome, email, login FROM usuario WHERE id = :id";
+        $st = $con->prepare($sql);
+        $st->bindParam(':id', $id);
+
+        $status = $st->execute();
+        $dados = $st->fetchAll();
+
+        $db->close();
+        return $dados;
     }
+
+    public function update(){
+        $sql = "UPDATE usuario SET nome = :nome , sobrenome = :sobrenome, email = :email, login = :login, senha = :senha WHERE id = :id";
+        
+        $st = $con->prepare($sql);
+        $st->bindParam(':nome', $this->nome); 
+        $st->bindParam(':sobrenome', $this->sobrenome);
+        $st->bindParam(':email', $this->email);
+        $st->bindParam(':login', $this->login);
+        $st->bindParam(':senha', $this->senha);
+        $status = $st->execute();
+
+    }
+
+
+
+    public function listarTodos($pagina = null, $contador = 100)
+    {
+        $db = new Database();
+        $con = $db->connect();
+
+        $sql = "SELECT id, nome, sobrenome, email, login FROM usuario limit $contador";
+        $rs = $con->query($sql);
+
+        $status = $rs->execute();
+        $dados = $rs->fetchAll();
+        $db->close();
+        return $dados;
+    }
+
 
     public function autenticar($login, $senha)
     {
